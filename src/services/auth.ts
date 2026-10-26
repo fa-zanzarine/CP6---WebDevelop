@@ -3,7 +3,16 @@ import { requireSupabase, supabase } from '@/lib/supabase'
 
 export async function signIn(email: string, password: string): Promise<void> {
   const { error } = await requireSupabase().auth.signInWithPassword({ email, password })
-  if (error) throw new Error('E-mail ou senha incorretos.')
+  if (!error) return
+
+  console.error('[auth] falha no login:', error.code ?? error.status, error.message)
+  if (error.code === 'invalid_credentials') throw new Error('E-mail ou senha incorretos.')
+  if (error.code === 'email_not_confirmed') {
+    throw new Error(
+      'Usuário não confirmado. No Supabase, confirme-o em Authentication > Users.',
+    )
+  }
+  throw new Error(`Não foi possível entrar (${error.code ?? error.message}).`)
 }
 
 export async function signOut(): Promise<void> {
