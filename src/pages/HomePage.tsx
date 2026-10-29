@@ -25,8 +25,9 @@ export default function HomePage() {
             Fabrício Zanzarine
           </h1>
           <p className="text-lg text-muted">
-            Engenharia de Software. Construo interfaces acessíveis, rápidas e bem
-            testadas.
+            Estou me formando em Engenharia de Software na FIAP. Venho me dedicando aos
+            estudos e aos projetos acadêmicos, sempre buscando em aprender, evoluir e
+            aplicar em casos reais. Fiquem atentos aos meus projetos pessoais futuros!
           </p>
           <div className="flex flex-wrap gap-3">
             <ButtonLink to="/projetos">Ver projetos</ButtonLink>
